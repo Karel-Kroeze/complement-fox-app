@@ -76,11 +76,15 @@
 		gap: 1em;
 	}
 
-	.controls {
+	.controls { 
 		margin-right: auto;
 	}
 
 	.status {
 		font-size: 1.5em;
+
+		.played {
+			color: #03a0ff;
+		}
 	}
 </style>

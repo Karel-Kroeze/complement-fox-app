@@ -137,12 +137,4 @@
 	.recording {
 		color: red;
 	}
-
-	.controls {
-		display: flex;
-		flex-flow: row nowrap;
-		align-items: center;
-		justify-content: flex-end;
-		gap: 1em;
-	}
 </style>
