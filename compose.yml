@@ -1,0 +1,19 @@
+services:
+  complement-fox:
+    build: .
+    environment:
+      - MESSAGES_PATH:./messages
+    volumes:
+      - data:/usr/etc/app/data
+      - ./messages:/usr/etc/app/messages
+    networks:
+      - proxy
+    restart: always
+
+volumes:
+  data:
+
+networks:
+  proxy:
+    name: proxy
+    external: true
