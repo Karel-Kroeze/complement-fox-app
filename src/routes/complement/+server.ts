@@ -3,7 +3,12 @@ import type { RequestHandler } from './$types';
 import { synthesize } from '../../lib/server/text-to-speech';
 
 export const GET: RequestHandler = async ({ url }): Promise<Response> => {
-	const complement_text = await complement(url.searchParams.get('q') ?? undefined);
+	const { key, q } = Object.fromEntries(url.searchParams.entries());
+	if (key !== process.env.SUPER_SECRET_PASSWORD) {
+		return new Response('COMPUTER SAYS NO', { status: 403 });
+	}
+
+	const complement_text = await complement(q);
 	if (!complement_text) {
 		return new Response('COMPLIMENT NOT FOUND', { status: 404 });
 	}
@@ -16,7 +21,7 @@ export const GET: RequestHandler = async ({ url }): Promise<Response> => {
 	return new Response(complement_audio, {
 		headers: {
 			'Content-Type': 'audio/wav',
-			'Content-Disposition': "inline; filename='complement.wav'"
+			'Content-Disposition': 'inline; filename=complement.wav'
 		}
 	});
 };
