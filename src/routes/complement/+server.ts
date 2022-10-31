@@ -21,7 +21,8 @@ export const GET: RequestHandler = async ({ url }): Promise<Response> => {
 	return new Response(complement_audio, {
 		headers: {
 			'Content-Type': 'audio/wav',
-			'Content-Disposition': 'inline; filename=complement.wav'
+			'Content-Disposition': 'inline; filename=complement.wav',
+			'Content-Length': complement_audio.length.toString()
 		}
 	});
 };

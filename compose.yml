@@ -1,8 +1,8 @@
 services:
   complement-fox:
     build: .
-    environment:
-      - MESSAGES_PATH:./messages
+    env_file:
+      - .env
     volumes:
       - data:/usr/etc/app/data
       - ./messages:/usr/etc/app/messages

@@ -13,6 +13,7 @@ COPY package.json .
 COPY pnpm-lock.yaml .
 RUN pnpm install --production
 COPY build/ build/
+COPY google-cloud-credential.json .
 COPY server.js .
 
 # do the thing
